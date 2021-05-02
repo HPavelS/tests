@@ -2,14 +2,22 @@ fun main() {
     val list = listOf<String?>("1","2",null)
     list.forEach { print("$it ") }
     next()
+
     list.forEachIndexed { index, data -> println("| $index -> $data ") }
+
     if (list.contains("2"))
         println("index = ${list.indexOf("2")}")
-
     println("element index 0 = ${list[0]}")
     println("-------------------------------")
+
     val mutList = mutableListOf("first", "second", "end")
     mutList.add("plus")
+    mutList.forEach { print("$it ")}
+    next()
+
+    println("Находим элемен списка и меняем его")
+    if (mutList.contains("end"))
+        mutList[mutList.indexOf("end")] = "three"
     mutList.forEach { print("$it ")}
     next()
 
