@@ -1,5 +1,5 @@
 fun main() {
-    val list = listOf<String?>("1","2",null)
+    val list = listOf("1","2",null)
     list.forEach { print("$it ") }
     next()
 
@@ -41,6 +41,7 @@ fun main() {
     mutList.forEach { print("$it ")}
     next()
 
+    println("Сортировка")
     val intMutList = mutableListOf(2,1,0,3,4,5,6,7,8)
     intMutList.sort()
 //    intMutList.reverse()
@@ -85,9 +86,60 @@ fun main() {
     copyList2.forEach { print("$it ") }
     next()
 
+    println("Создаем коллекцию Set и видим что она убирает все дубликаты в момент создания списка")
+    val friendSet = setOf("Pavel", "Andrey", "Katya", "Katya", "Katya", "Pavel", "Andrey")
+    friendSet.forEach { println("$it ") }
+    next()
+
+    println("добавляем все элементы списка toAdd к списку MutableSet")
+    toAdd = listOf(0,1,2,0,4,4,6,2,8)
+    var setInt = mutableSetOf<Int>()
+    setInt.addAll(toAdd)
+    setInt.forEach { print("$it ") }
+    next()
+
+    println("копируем toAdd в MutableSet")
+    setInt = toAdd.toMutableSet()
+    setInt.forEach { print("$it ") }
+    next()
+
+    println("проверяем есть ли одинаковые элементы в toAdd")
+    if (toAdd.size != toAdd.toSet().size)
+        println("есть дубликаты")
+    else println("нет дубликатов")
+    next()
+
+    println("Создаем Map")
+    val r1 = Recipe("Chicken Soup")
+    val r2 = Recipe("Quinoa Salad")
+    val r3 = Recipe("Thai Curry")
+    val recipeMap = mapOf("Recipe1" to r1, "Recipe2" to r2, "Recipe3" to r3)
+    recipeMap.forEach { (key, item) -> print("$key -> $item ") }
+    println("")
+    print(recipeMap)
+
+    next()
+
+    println("Проверка ключа")
+    print("такой ключ = ${recipeMap.containsKey("Recipe1")}")
+    next()
+
+    println("Проверка значения")
+    val recipeToCheck = Recipe("Chicken Soup")
+    if (recipeMap.containsValue(recipeToCheck))
+        println("Такое значение существует")
+    next()
+
+    println("Получаем значение из ключа")
+    if (recipeMap.containsKey("Recipe1")) {
+        val value = recipeMap.getValue("Recipe1")
+        println(value)
+    }
 }
 
 fun next() {
     println("")
     println("-------------------------------")
 }
+
+data class Recipe(val name:String = "")
