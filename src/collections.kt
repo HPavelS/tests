@@ -135,6 +135,49 @@ fun main() {
         val value = recipeMap.getValue("Recipe1")
         println(value)
     }
+    next()
+
+    println("создаем и добавляем еще один элемент к mutableMafOf")
+    val mutMap = mutableMapOf("key1" to "1", "key2" to "2")
+    mutMap.put("key3", "3")
+    mutMap["key4"] = "4"
+    println(mutMap)
+    next()
+
+    println("добавляем несколько элементов к mutableMapOf")
+    val mutAdd = mapOf("key5" to "5", "key6" to "6")
+    mutMap.putAll(mutAdd)
+    println(mutMap)
+    next()
+
+    println("удаляем элеаменты mutableMapOf")
+    mutMap.remove("key6")
+    println(mutMap.remove("key5", "5"))  //удалит только если есть ключ и в нем указанные данные
+    println(mutMap)
+    next()
+
+    println("копируем mutableMapOf в List и в Set")
+    val mapToList = mutMap.toList()
+    println(mapToList)
+    val mapToSet = mutMap.entries
+    println(mapToList)
+    next()
+
+    println("копируем только value значения и толко keys в разные списки")
+    val mapToListKeys = mutMap.keys.toList()
+    println(mapToListKeys)
+    val mapToListValues = mutMap.values.toList()
+    println(mapToListValues)
+    next()
+
+    println("проверяем нет ли одинаковых значений в Map")
+    mutMap["key5"] = "4"
+    if (mutMap.size > mutMap.values.toSet().size)
+        println(true)
+    else
+        println(false)
+    next()
+
 }
 
 fun next() {
