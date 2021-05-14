@@ -185,4 +185,4 @@ fun next() {
     println("-------------------------------")
 }
 
-data class Recipe(val name:String = "")
+private data class Recipe(val name:String = "")

@@ -43,15 +43,17 @@ fun main() {
     next()
     println(myFun1 (5){it*3})
     next()
+    println(poundsToUSTons(2.0))
+    next()
 }
-fun lFun(x: Double, y:Double, formula: (Double, Double) -> Double): Double {
+private fun lFun(x: Double, y:Double, formula: (Double, Double) -> Double): Double {
     return (formula(x,y))
 }
-fun lFun2(formula: (Double) -> Double): Double {
+private fun lFun2(formula: (Double) -> Double): Double {
     return (formula(5.0))
 }
 
-fun lReturn(param: String): (Double) -> Double{
+private fun lReturn(param: String): (Double) -> Double{
     when(param){
         "toTons" -> return {it/1000}
         "toCentners" -> return {x -> x/100}
@@ -59,11 +61,11 @@ fun lReturn(param: String): (Double) -> Double{
     }
 }
 
-fun combine(lambda1: (Double) -> Double,
+private fun combine(lambda1: (Double) -> Double,
             lambda2: (Double) -> Double): (Double) -> Double {
     return { x: Double -> lambda2(lambda1(x)) }
 }
 
-fun myFun1(x: Int = 6, y: (Int) -> Int = { it }): Int {
+private fun myFun1(x: Int = 6, y: (Int) -> Int = { it }): Int {
     return y(x)
 }
